@@ -14,5 +14,17 @@ const products = [
 ]
 
 module.exports = () => {
-	// Seu código vai aqui!
+  const productsSelectors = {}
+
+  for(const product of products){
+    const [color, size] = product.split('-')
+
+    if(!productsSelectors[color]){
+      productsSelectors[color] = {}
+    }
+
+    productsSelectors[color][size] = (productsSelectors[color][size] || 0) + 1
+  }
+
+  return productsSelectors
 }
